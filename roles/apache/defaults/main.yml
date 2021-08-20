@@ -1,0 +1,7 @@
+default_soft_pkg_debian:
+  - mc
+  - vim
+  - anacron
+  - apache2
+  - wget
+  - curl

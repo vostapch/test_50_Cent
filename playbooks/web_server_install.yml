@@ -1,0 +1,8 @@
+---
+- hosts: ubuntu18
+  become: yes
+  roles:
+    - { role: "apache" }  
+    - { role: "php" }
+    - { role: "mysql"}
+    - { role: "json" }

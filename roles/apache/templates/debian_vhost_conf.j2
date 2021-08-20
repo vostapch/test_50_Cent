@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName www.example2.com
+    DocumentRoot /var/www/html/example2.com/
+    <Directory /var/www/html/example2.com>
+    Options -Indexes +FollowSymLinks +MultiViews
+    AllowOverride All
+    Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/example2-error.log
+    CustomLog ${APACHE_LOG_DIR}/example2-access.log combined
+</VirtualHost>
