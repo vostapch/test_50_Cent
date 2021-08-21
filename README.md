@@ -9,4 +9,5 @@
 4. [Task 1.4 Creating roles/apache with tasks directory and Debian.yml](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/tasks/Debian.yml)
 5. [Task 1.5 Creating roles/apache with templates directory/debian_vhost_conf.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/templates/debian_vhost_conf.j2)
 6. [Task 1.6 Creating roles/apache with templates directory/php_info.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/templates/php_info.j2)
-
+#### [Alternative method] Working with AWS(Ubuntu set up) manual method.
+1.  [Task 2 Creating README.md for installing (nginx,installing postgress, installing nginx with docker, installing simple python application)](https://github.com/vostapch/test_50_Cent/tree/main/Alternative_manual)
