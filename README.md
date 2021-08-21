@@ -11,3 +11,5 @@
 6. [Task 1.6 Creating roles/apache with templates directory/php_info.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/templates/php_info.j2)
 #### [Alternative method] Working with AWS(Ubuntu set up) manual method.
 1.  [Task 2 Creating README.md for installing (nginx,installing postgress, installing nginx with docker, installing simple python application)](https://github.com/vostapch/test_50_Cent/tree/main/Alternative_manual)
+#### Useful
+1. [Git commands to perform communication with GitHub](https://github.com/vostapch/test_50_Cent/tree/main/GIT_commands)
