@@ -6,9 +6,10 @@
 1. [Task 1.1 Creating inventory file with vagrant_hosts.ini](https://github.com/vostapch/test_50_Cent/blob/main/inventory/vagrant_hosts.ini)
 2. [Task 1.2 Creating playbooks with aws_test.yml](https://github.com/vostapch/test_50_Cent/blob/main/playbooks/aws_test.yml)
 3. [Task 1.3 Creating roles/nginx with defaults directory and main.yml](https://github.com/vostapch/test_50_Cent/blob/main/roles/nginx/defaults/main.yml)
-4. [Task 1.4 Creating roles/apache with tasks directory and Debian.yml](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/tasks/Debian.yml)
-5. [Task 1.5 Creating roles/apache with templates directory/debian_vhost_conf.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/templates/debian_vhost_conf.j2)
-6. [Task 1.6 Creating roles/apache with templates directory/php_info.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/apache/templates/php_info.j2)
+4. [Task 1.4 Creating roles/nginx with tasks directory and Debian.yml](https://github.com/vostapch/test_50_Cent/blob/main/roles/nginx/tasks/Debian.yml)
+5. [Task 1.5 Creating roles/nginx with templates directory/debian_nginx_conf.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/nginx/templates/debian_nginx.con.j2)
+6. [Task 1.6 Creating roles/nginx with templates directory/php_info.j2](https://github.com/vostapch/test_50_Cent/blob/main/roles/nginx/templates/php_info.j2)
+7. [Task 1.7 Creating roles/nginx with vars directory/main.yml](https://github.com/vostapch/test_50_Cent/blob/main/roles/nginx/vars/main.yml)
 #### [Alternative method] Working with AWS(Ubuntu set up) manual method.
 1.  [Task 2 Creating README.md for installing (nginx,installing postgress, installing nginx with docker, installing simple python application)](https://github.com/vostapch/test_50_Cent/tree/main/Alternative_manual)
 #### Useful
