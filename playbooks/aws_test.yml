@@ -1,8 +1,8 @@
 ---
-- hosts: ubuntu18
+- hosts: aws_ubuntu
   become: yes
   roles:
-    - { role: "apache" }  
-    - { role: "php" }
-    - { role: "mysql"}
-    - { role: "json" }
+    - { role: "nginx" }  
+#   - { role: "php" }
+#    - { role: "mysql"}
+#    - { role: "json" }
