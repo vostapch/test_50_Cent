@@ -93,4 +93,4 @@ PLAY RECAP *********************************************************************
 aws_ubuntu                 : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
-![image](https://github.com/vostapch/DevOps_online_Lviv_2020Q3Q4/blob/master/m4/task4.1/images/2.png)
+![image](https://github.com/vostapch/test_50_Cent/blob/main/run_playbook/image/1.png)
