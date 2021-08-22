@@ -1,7 +1,14 @@
 default_soft_pkg_debian:
-  - mc
-  - vim
-  - anacron
-  - apache2
-  - wget
-  - curl
+  - nginx
+  - php-fpm
+  - php-mysql
+  - python3-pymysql
+  - mysql-server
+  - postgresql
+  - postgresql-contrib
+  - libpq-dev
+  - python3-psycopg2
+  - bash
+  - openssl
+  - libssl-dev
+  - libssl-doc
