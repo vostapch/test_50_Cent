@@ -1,4 +1,5 @@
-- name: 1.Debian
+---
+ - name: 1.Debian
    debug:
      var: ansible_os_family
 
@@ -6,82 +7,64 @@
    apt: 
      update_cache: yes
 
- - name: 3.Enabling ufw
-   ufw:
-     state: enabled
-
- - name: 4.Allow all access to tcp port 22 
-   ufw:
-    rule: allow
-    port: 22
-    proto: tcp
-     
- - name: 5.Adding OpenSSH to ufw
-   ufw:
-     rule: allow
-     name: 'OpenSSH'
-
- # vim, nano, mc, firewalld
- - name: 6.Installing default soft
+ - name: 3.Installing default soft
    apt:
      name: "{{item}}"
      state: present
    with_items:
      - "{{ default_soft_pkg_debian }}"
-   notify: apt upgrade
 
- - name: 7.Adding 'Apache Full' to ufw
-   ufw:
-     rule: allow
-     name: 'Apache'
 
- - name: 8.Allow all access to tcp port 8080 
-   ufw:
-    rule: allow
-    port: 80
-    proto: tcp
-
- - name: 9.Start apache2 WebServer
-   service: 
-     name: apache2
-     state: started
-     enabled: yes
-
- - name: 10.Install config file for example2.com and restart httpd
+ - name: 4.Install config file for example2.com and restart httpd
    template:
-    src: debian_vhost_conf.j2
-    dest: /etc/apache2/sites-available/000-default.conf
+    src: debian_nginx.conf.j2
+    dest: "/etc/nginx/sites-available/{{ http_conf }}"
     owner: root
     group: root
     mode: 0644
-   notify: restart apache2  
-# when: install_apache2.changed
- 
- - name: 11.Creating directory for example2.com
-   file: 
-    path: /var/www/html/example2.com
-    state: directory
-    owner: www-data
-    group: www-data
-    mode: 0775
-   notify: restart apache2
-   
- - name: 12.Downloading WPress and unachive
-   unarchive:
-    src: https://wordpress.org/latest.tar.gz 
-    dest: /var/www/html/example2.com
-    remote_src: yes
-    extra_opts: [--strip-components=1]
-    owner: www-data
-    group: www-data
-    mode: 0775
-   notify: restart apache2
+   notify: restart nginx 
 
- - name: 7.Giving rights to the info.php  
+ - name: 5.Enables new site
+   file:
+    src: "/etc/nginx/sites-available/{{ http_conf }}"
+    dest: "/etc/nginx/sites-enabled/{{ http_conf }}"
+    state: link
+   notify: reload nginx
+
+ - name: 6. Removes "default" site
+   file:
+    path: "/etc/nginx/sites-enabled/default"
+    state: absent
+   notify: restart nginx
+
+ - name: 7. Sets Up PHP Info Page
    template:
-    src: php_info.j2
-    dest: /var/www/html/example2.com/info.php
-    owner: www-data
-    group: www-data
-    mode: 0775
-   notify: restart apache2
+    src: "php_info.j2"
+    dest: "/var/www/html/info.php"
+
+ - name: 8. Ensure the PostgreSQL service is running
+   service: name=postgresql state=started enabled=yes
+ 
+ - name: 9. "Create app database"
+   become: true
+   become_user: postgres
+   postgresql_db: name={{ db_name }}
+        template='template0'
+        state=present
+ 
+ - name: 10. Ensure user has access to the new database
+   become: true
+   become_user: postgres
+   postgresql_user: db={{ db_name }}
+        name={{ db_user }}
+        password={{ db_password }}
+        priv=ALL
+        state=present
+
+ - name: 11. Ensure user does not have unnecessary permissions
+   become: true
+   become_user: postgres
+   postgresql_user: name={{ db_user }}
+        role_attr_flags=NOSUPERUSER,NOCREATEDB
+        state=present
+

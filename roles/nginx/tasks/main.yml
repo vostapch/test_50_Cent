@@ -1,4 +1,4 @@
 ---
 - name: include OS
-  include: "Debian.yml"
+  include: "debian.yml"
 
